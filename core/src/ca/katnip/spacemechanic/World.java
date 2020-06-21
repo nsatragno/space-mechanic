@@ -21,8 +21,8 @@ public class World implements Entity {
 	}
 
 	@Override
-	public void update() {
-		entities.forEach(entity -> entity.update());
+	public void update(float delta) {
+		entities.forEach(entity -> entity.update(delta));
 	}
 
 }
