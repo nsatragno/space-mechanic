@@ -5,17 +5,21 @@ import java.util.ArrayList;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
+/**
+ * The World object houses everything that makes up for the "game world", such as the player, the
+ * ship and enemies.
+ *
+ */
 public class World {
 
 	private Player player;
 	private Ship ship;
 	private ArrayList<Entity> entities;
 	private OrthographicCamera camera;
-	private ExtendViewport extendViewport;
 	
 	public World() {
 		camera = new OrthographicCamera(Main.WIDTH, Main.HEIGHT);
-		extendViewport = new ExtendViewport(Main.WIDTH, Main.HEIGHT, camera);
+		new ExtendViewport(Main.WIDTH, Main.HEIGHT, camera);
 		
 		entities = new ArrayList<>();
 		ship = new Ship();

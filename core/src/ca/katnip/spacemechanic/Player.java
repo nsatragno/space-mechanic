@@ -5,8 +5,12 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 
-public class Player implements Entity {
+/**
+ * The player-controller avatar.
+ */
+public class Player implements Entity, HasCoordinates {
 	
 	private final Texture sprite;
 	private final float speed = 200;
@@ -32,20 +36,35 @@ public class Player implements Entity {
 
 	@Override
 	public void update(float delta) {
-		float dx = 0, dy = 0;
+		Vector2 dv = new Vector2();
 		if (Gdx.input.isKeyPressed(Keys.LEFT)) {
-			dx = -1;
+			dv.x = -1;
 		} else if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
-			dx = 1;
+			dv.x = 1;
 		}
 		if (Gdx.input.isKeyPressed(Keys.UP)) {
-			dy = 1;
+			dv.y = 1;
 		} else if (Gdx.input.isKeyPressed(Keys.DOWN)) {
-			dy = -1;
+			dv.y = -1;
 		}
 		
-		x += delta * dx * speed;
-		y += delta * dy * speed;
+		dv.scl(speed * delta);
+		
+		if (ship.collides(this, dv)) {
+			dv = ship.clipVectorToSurface(this, dv);
+		}
+		
+		x += dv.x;
+		y += dv.y;
 	}
 
+	@Override
+	public float getX() {
+		return x;
+	}
+	
+	@Override
+	public float getY() {
+		return y;
+	}
 }
