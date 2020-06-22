@@ -3,6 +3,7 @@ package ca.katnip.spacemechanic;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 public class World {
 
@@ -10,9 +11,12 @@ public class World {
 	private Ship ship;
 	private ArrayList<Entity> entities;
 	private OrthographicCamera camera;
+	private ExtendViewport extendViewport;
 	
 	public World() {
 		camera = new OrthographicCamera(Main.WIDTH, Main.HEIGHT);
+		extendViewport = new ExtendViewport(Main.WIDTH, Main.HEIGHT, camera);
+		
 		entities = new ArrayList<>();
 		player = new Player();
 		ship = new Ship();
