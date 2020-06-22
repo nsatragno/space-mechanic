@@ -8,8 +8,8 @@ public class DesktopLauncher {
 	public static void main(String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "Space Mechanic";
-		config.width = 640;
-		config.height = 360;
+		config.width = Main.WIDTH;
+		config.height = Main.HEIGHT;
 		config.fullscreen = false;
 		config.vSyncEnabled = true;
 		new LwjglApplication(new Main(), config);

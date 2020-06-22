@@ -5,6 +5,9 @@ import com.badlogic.gdx.Gdx;
 
 public class Main extends Game {
 	
+	public static final int WIDTH = 640;
+	public static final int HEIGHT = 360;
+
 	private World world;
 	
 	@Override

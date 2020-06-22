@@ -2,6 +2,7 @@ package ca.katnip.spacemechanic;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -10,6 +11,7 @@ public class Player implements Entity {
 	private final Texture sprite;
 	private final float speed = 200;
 	
+	private SpriteBatch batch;
 	private float x;
 	private float y;
 
@@ -17,11 +19,15 @@ public class Player implements Entity {
 		sprite = new Texture("sprites/player.png");
 		x = 0;
 		y = 0;
+		batch = new SpriteBatch();
 	}
 	
 	@Override
-	public void draw(SpriteBatch batch) {
+	public void draw(OrthographicCamera camera) {
+		batch.begin();
+		batch.setProjectionMatrix(camera.combined);
 		batch.draw(sprite, x, y);
+		batch.end();
 	}
 
 	@Override
