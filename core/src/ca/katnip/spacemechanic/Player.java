@@ -10,15 +10,15 @@ public class Player implements Entity {
 	
 	private final Texture sprite;
 	private final float speed = 200;
+	private final Ship ship;
 	
 	private SpriteBatch batch;
-	private float x;
-	private float y;
+	private float x = 64;
+	private float y = 64;
 
-	public Player() {
+	public Player(Ship ship) {
+		this.ship = ship;
 		sprite = new Texture("sprites/player.png");
-		x = 0;
-		y = 0;
 		batch = new SpriteBatch();
 	}
 	

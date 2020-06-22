@@ -18,8 +18,8 @@ public class World {
 		extendViewport = new ExtendViewport(Main.WIDTH, Main.HEIGHT, camera);
 		
 		entities = new ArrayList<>();
-		player = new Player();
 		ship = new Ship();
+		player = new Player(ship);
 		entities.add(player);
 	}
 	
